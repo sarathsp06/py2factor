@@ -1,11 +1,14 @@
 # py2factor
 
-##Usage 
+## Usage 
 
 ```
 pip install py2factor
-py2factor add --name "<name>" --key "<key/secret>"   #adds a profile
-py2factor profiles --filter "<prefix>"               #list all profiles and its current totp
+py2factor add [--name "<name>" --key "<key/secret>"][--url <"totpurl">]   #adds a profile given (name and key) or url
+py2factor profiles --filter "<prefix>"               #list all profiles 
+py2factor list --filter "<prefix>"                   #list all profiles name and totp
+py2factor del --name "<name>"                        #deltes a profile if presen
+
 
 ```
 
