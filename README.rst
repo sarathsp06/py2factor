@@ -1,5 +1,5 @@
 =================
- Running demoapp
+ Running Py2factor
 =================
 
 Setup
