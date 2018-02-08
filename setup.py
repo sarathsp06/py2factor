@@ -2,8 +2,7 @@
 
 PROJECT = 'py2factor'
 
-# Change docs/sphinx/conf.py too!
-VERSION = '0.1'
+VERSION = '0.1.1'
 
 from setuptools import setup, find_packages
 
@@ -28,7 +27,6 @@ setup(
                  'Programming Language :: Python :: 2.7',
                  'Programming Language :: Python :: 3',
                  'Programming Language :: Python :: 3.2',
-                 'Intended Audience :: Developers',
                  'Environment :: Console',
                  ],
     platforms=['linux'],
@@ -38,15 +36,16 @@ setup(
     namespace_packages=[],
     packages=find_packages(),
     include_package_data=True,
-
     entry_points={
         'console_scripts': [
             'py2factor = py2factor.main:main'
         ],
         'py2factor.commands': [
+            'list = py2factor.list:List',
             'profiles = py2factor.profiles:Profiles',
-            'add = py2factor.add:Add'
+            'add = py2factor.add:Add',
+            'del = py2factor.delete:Delete'
         ],
     },
     zip_safe=False,
-)
+) 

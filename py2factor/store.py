@@ -10,7 +10,6 @@ class Store(object):
         super(Store, self).__init__()
 
     def read_profiles(self):
-        self.log.info("Reading profiles")
         try:
             self.profiles  = pickle.load(open(self.db))
         except:
@@ -19,11 +18,17 @@ class Store(object):
         return self.profiles
 
     def store_profiles(self):
-        self.log.info("storing profiles %s",repr(self.profiles))
         pickle.dump(self.profiles,open(self.db,'w+'))
 
-    def add_profile(self,name,profile):
-        self.log.info("storing profiles %s:%s",name,profile)
+    def add_profile(self,profile):
+        if profile.name is None or profile.name == "":
+            raise ValueError("Profile without name wont be stored")
+        self.log.info("adding profile %s:%s",profile.name,profile)
         self.read_profiles()
-        self.profiles[name] = profile
+        self.profiles[profile.name] = profile
+        self.store_profiles()
+
+    def remove_profile(self,name):
+        self.read_profiles()
+        del(self.profiles[name])
         self.store_profiles()
