@@ -1,10 +1,15 @@
 # py2factor
 
-## Running Py2factor
+##Usage 
 
+```
+pip install py2factor
+py2factor add --name "<name>" --key "<key/secret>"   #adds a profile
+py2factor profiles --filter "<prefix>"               #list all profiles and its current totp
 
-Setup
------
+```
+
+## Development
 
 First, you need to create a virtual environment and activate it.
 
