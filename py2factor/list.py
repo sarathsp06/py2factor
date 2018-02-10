@@ -16,4 +16,4 @@ class List(Lister):
     def take_action(self, parsed_args):
         profiles = Store().read_profiles()
         return (("Name","Token"),
-        	((key,"{0:03d}".format(profiles[key].totp())) for key in profiles.keys() if key.startswith(parsed_args.filter)))
+        	((key,"{0:06d}".format(profiles[key].totp())) for key in profiles.keys() if key.startswith(parsed_args.filter)))

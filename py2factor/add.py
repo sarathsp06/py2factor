@@ -5,7 +5,8 @@ from .store import Store
 from .profile import Profile 
 
 class Add(Command):
-    """ Adds a profile given name and key in base32 encoding """
+    """ Adds a profile given name and key in base32 encoding OR url
+    """
     log = logging.getLogger(__name__)
 
     def get_parser(self, prog_name):
@@ -17,21 +18,21 @@ class Add(Command):
 
     def take_action(self, parsed_args):
         self.log.debug("Stroring profile %s:%s:%s",parsed_args.name,parsed_args.key,parsed_args.url)
-        if parsed_args.url is not None and parsed_args.url != "":
+        if parsed_args.url != "":
             try:
                 profile = Profile(url=parsed_args.url)
                 Store().add_profile(profile)
                 self.app.stdout.write("Successfully added profile\n")
                 return
             except Exception as e:
-                self.app.stderr.write("Failed adding :" + str(e))
+                self.app.stderr.write("Failed adding profile:" + str(e))
                 return
 
         if parsed_args.name  == "" or  parsed_args.key == "":
-            self.app.stderr.write("Mandatry parameters missing name and key or url is mandatory")
+            self.app.stderr.write("Mandatry parameters missing : name and key or url is mandatory")
         try:
             profile = Profile(name=parsed_args.name,secret=parsed_args.key)
             Store().add_profile(profile)
             self.app.stdout.write("Successfully added profile")
         except Exception,e:
-            self.app.stderr.write("Failed adding :" + str(e)) 
+            self.app.stderr.write("Failed adding profile:" + str(e)) 

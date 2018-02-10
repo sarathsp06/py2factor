@@ -1,6 +1,6 @@
 build:
 	 python setup.py sdist bdist_wheel
-upload:
+publish:
 	twine upload  dist/*
 clean:
 	rm -rf build dist  py2factor.egg-info

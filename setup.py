@@ -1,15 +1,13 @@
 #!/usr/bin/env python
 
-PROJECT = 'py2factor'
-
-VERSION = '0.1.1'
-
 from setuptools import setup, find_packages
-
+from py2factor import VERSION
 try:
     long_description = open('README.rst', 'rt').read()
 except IOError:
     long_description = ''
+
+PROJECT = 'py2factor'
 
 setup(
     name=PROJECT,

@@ -5,7 +5,7 @@ from .store import Store
 from cliff.show import ShowOne
 
 class Delete(ShowOne):
-    """ Lists all profiles and its totp """
+    """ Delete a profile given profile name """
     log = logging.getLogger(__name__)
 
     def get_parser(self, prog_name):
@@ -23,4 +23,4 @@ class Delete(ShowOne):
         p = profile
         titles = ('name','issuer','algorithm','digits','period','secret','url')
         profile_tuple = (p.name,p.issuer,p.algorithm,p.digits,p.period,p.secret,p.url)
-        return (titles,profile)
+        return (titles,profile_tuple)
