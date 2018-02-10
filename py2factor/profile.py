@@ -4,28 +4,29 @@ from totp import validate_secret,get_totp_token
 from totp import ALGORITHM,PERIOD,DIGITS
 
 class Profile(object):
-	"""Stores totp details of a profile"""
+	"""	Class that represent a profile
+		It stores all the details of a profile
+	"""
 	def __init__(self,url=None,name=None,secret=None,period=PERIOD,algorithm=ALGORITHM,digits=DIGITS):
 		super(Profile, self).__init__()
-		if url is not None:
+		self.url = url
+		if self.url is not None:
 			self.parse_url()
 			return
 		if name is None or secret is None:
 			raise ValueError("Name and Secret are mandatory if Url is not passed")
-		self.url=None
 		self.name=name
 		self.secret=secret
 		self.period = period
 		self.issuer = None
 		self.algorithm=algorithm
 		self.digits=digits
-		self.url = url
 
 	def totp(self):
 		return get_totp_token(self.secret,self.period,self.algorithm,self.digits)
 
 	def parse_url(self):
-		""" parse the self.url and assign values
+		""" parse the self.url and assign values to `Profile` instance members
 		sample url  : otpauth://totp/ACME%20Co:john.doe@email.com?secret=HXDMVJECJJWSRB3HWIZR4IFUGFTMXBOZ&issuer=ACME%20Co&algorithm=SHA1&digits=6&period=30
 		"""
 		if self.url is None:

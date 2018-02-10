@@ -3,10 +3,10 @@
 import sys
 
 import pickle
+from .version import VERSION
 from cliff.app import App
 from cliff.commandmanager import CommandManager
 
-VERSION  = "0.1.1"
 
 class Py2Factor(App):
     def __init__(self): 

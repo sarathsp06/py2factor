@@ -23,7 +23,7 @@ class Store(object):
     def add_profile(self,profile):
         if profile.name is None or profile.name == "":
             raise ValueError("Profile without name wont be stored")
-        self.log.info("adding profile %s:%s",profile.name,profile)
+        self.log.debug("Adding profile %s:%s",profile.name,profile)
         self.read_profiles()
         self.profiles[profile.name] = profile
         self.store_profiles()
