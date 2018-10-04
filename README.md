@@ -3,7 +3,10 @@
 # py2factor
 > Two Factor Authentication
 
-Two-factor authentication (also known as 2FA) is a type (subset) of multi-factor authentication. It is a method of confirming a user's claimed identity by utilizing a combination of two different factors: 1) something they know, 2) something they have, or 3) something they are.
+Two-factor authentication (also known as 2FA) is a type (subset) of multi-factor authentication. It is a method of confirming a user's claimed identity by utilizing a combination of two different factors: 
+1. something they know, 
+2. something they have, or 
+3. something they are.
 
 >  py2factor app
 
